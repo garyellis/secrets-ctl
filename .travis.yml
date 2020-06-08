@@ -18,4 +18,4 @@ deploy:
   file: release/*
   skip_clleanup: true
   on:
-    tag: true
+    tags: true
