@@ -1,0 +1,21 @@
+language: minimal
+
+services:
+  - docker
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install make
+
+script:
+ - make build
+
+deploy:
+  provider: releases
+  api_key:
+    secure: fX56bc1jzYh0WirRSs+uRBrZbb5LRblY65S9ZZhqsP20pGdSEKMoTyrlHfcX6A8IBtLRYvwgRBD4hhpJDUgJaFGrIWVRw+BA9OzsLmb+JF2WrN9KT2oEuxAtLM6CBSqJeG906dwIqa8lFZNEk31e9R9+7AmrhFcYHKQ1esBW2IIIQ5I9NZEuDTP74UEba4HQEDiQIxEls+RxhI0zEHefNvxQbHMBAfd6G/PZ6HKBTv2X70AZfsNCmdcae4hvI0hchLTlLHM0Egxk/bCw1k5rjMIuIFKDfZB61qxtdoVGMDF0u3Kl7j5B2vvZyvn5VHysGOLl9Z4SEnRxeRS7I1+MSg87ML3bFMnsSNtYlNiGlcQeVR2vVONYeDrW9hWK/R3W0noVDCd0v7lGBss4odV3MuQioNM5Qn4p9lyyrh8hkvfDVkfoBUjdCOfYWDKSWu6QQIx0RwNajQltPzzXl2qRCCxjwh79l2JJSRpfeVGopNbm+PXuMUTv7bvGYbpeanWMdtC+8nqYpdGOdiYa1UJ/bpyMkrmUqwIG6LW3iQH/6O1ikbUz71X8AJJl91yEyxQyNFbX4asbOOGnwCO5CyXuzMF+fR+Xjg5DWKl2+xy3nleFSXaGoHEqSwaIb5AiHRWX61MAoIrIC8SnzEoFCusNRUuemRHBjhrdVSHnk0jCbc8=
+  file_glob: true
+  file: release/*
+  skip_clleanup: true
+  on:
+    tag: true

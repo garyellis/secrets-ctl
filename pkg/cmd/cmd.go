@@ -17,12 +17,13 @@ func NewRootCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "secrets-ctl",
 		Short:   "secrets utility cli",
-		Version: "0.0.0",
+		Version: Version,
 	}
 
 	cmd.PersistentFlags().StringVar(&path, "path", ".", "the secret yaml files path")
 	cmd.PersistentFlags().StringVar(&filter, "filter", "secret.yaml", "the secret yaml files path")
 	cmd.PersistentFlags().BoolVar(&backup, "backup", true, "backup the secrets file(s)")
+	cmd.AddCommand(VersionCmd())
 	cmd.AddCommand(EncryptCmd())
 	cmd.AddCommand(DecryptCmd())
 	cmd.AddCommand(VaultKVCmd())

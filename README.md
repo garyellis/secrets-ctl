@@ -1,4 +1,4 @@
-# secrets-ctl
+# secrets-ctl [![Build Status](https://travis-ci.org/garyellis/secrets-ctl.svg?branch=master)](https://travis-ci.org/garyellis/secrets-ctl)
 Secrets file storage utility for IAC pipelines.
 
 
