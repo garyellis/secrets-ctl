@@ -31,8 +31,8 @@ func VaultKVCmd() *cobra.Command {
 func VaultKVListCmd() *cobra.Command {
 	vaultKVListCmd := &cobra.Command{
 		Use:   "list",
-		Short: "lists vault kv items",
-		RunE:  VaultKVWrite,
+		Short: "lists vault kv keys",
+		RunE:  VaultKVList,
 	}
 	return vaultKVListCmd
 }
