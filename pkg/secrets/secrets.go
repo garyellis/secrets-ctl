@@ -133,7 +133,10 @@ func (s *SecretsClient) VaultExportKV(key, transitmount, transitkey, filename st
 		if err != nil {
 			return err
 		}
-
+		if secret["data"] == nil {
+			log.Warnf("[secrets/secrets] %s is in a deleted state. skipping", i)
+			continue
+		}
 		data := secret["data"].(map[string]interface{})
 		s.Secrets[0].SecretConfig.Secrets = append(s.Secrets[0].SecretConfig.Secrets, SecretData{
 			VaultKVPath: i,
