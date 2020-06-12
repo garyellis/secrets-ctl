@@ -19,7 +19,7 @@ var (
 func VaultKVCmd() *cobra.Command {
 	vaultCmd := &cobra.Command{
 		Use:   "vault-kv",
-		Short: "interacts with vault kv store",
+		Short: "interact with vault kv secret engine",
 	}
 	vaultCmd.PersistentFlags().StringVar(&kvSearchPath, "path", "/secret/data/", "the kv search path")
 	vaultCmd.AddCommand(VaultKVWriteCmd())
@@ -40,7 +40,7 @@ func VaultKVListCmd() *cobra.Command {
 func VaultKVExportCmd() *cobra.Command {
 	vaultKVExportCmd := &cobra.Command{
 		Use:   "export",
-		Short: "export kv secrets to a config file",
+		Short: "export kv secrets to a yaml config file",
 		RunE:  VaultKVExport,
 	}
 	vaultKVExportCmd.PersistentFlags().StringVar(&transitMount, "transit-mount", "/transit", "the transit engine mount path")
@@ -53,8 +53,8 @@ func VaultKVExportCmd() *cobra.Command {
 func VaultKVWriteCmd() *cobra.Command {
 	vaultKVWriteCmd := &cobra.Command{
 		Use:   "write",
-		Short: "write secret files to vault kv secret engine",
-		Long:  `decrypts encrypted secrets and writes them to vault kv secret engine`,
+		Short: "write secret yaml files to vault",
+		Long:  `writes yaml secret config files to vault kv secret engine`,
 		RunE:  VaultKVWrite,
 	}
 
