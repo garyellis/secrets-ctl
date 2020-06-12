@@ -1,12 +1,10 @@
 package vault
 
 import (
-	"encoding/json"
 	"net/http"
 	"time"
 
 	vaultapi "github.com/hashicorp/vault/api"
-	log "github.com/sirupsen/logrus"
 )
 
 // Client is the vault client
@@ -39,15 +37,4 @@ func NewClient() (*Client, error) {
 		},
 		newclient,
 	}, nil
-}
-
-// ReadSecret reads the kv secret
-func (c *Client) ReadSecret() error {
-	value, err := c.Logical().Read("secret/data/env")
-	if err != nil {
-		return err
-	}
-	data, err := json.Marshal(value.Data["data"])
-	log.Infof("[vault-client] read /secret/env: %s", data)
-	return nil
 }

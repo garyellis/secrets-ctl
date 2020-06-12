@@ -1,3 +1,5 @@
+VERSION=0.2.0
+
 .PHONY: help
 	.DEFAULT_GOAL := help
 
@@ -7,7 +9,7 @@ help: ## show this message
 
 
 build: ## build the binary
-	docker build -t build/secrets-ctl .
+	docker build --build-arg VERSION=$(VERSION) -t build/secrets-ctl .
 	docker create --name secrets-ctl build/secrets-ctl
 	docker cp secrets-ctl:/release/ .
 	docker rm secrets-ctl
